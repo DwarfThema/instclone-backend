@@ -7,7 +7,8 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DwarfThema/instclone-backend.git"
+    "url": "git+https://github.com/DwarfThema/instclone-backend.git",
+    "migrate": "npx prisma migrate dev"
   },
   "keywords": [],
   "author": "",
