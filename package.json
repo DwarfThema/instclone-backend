@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/DwarfThema/instclone-backend#readme",
   "dependencies": {
+    "@prisma/client": "^3.7.0",
     "apollo-server": "^3.6.1",
     "graphql": "^16.2.0"
   },
@@ -24,6 +25,7 @@
     "@babel/core": "^7.16.7",
     "@babel/node": "^7.16.7",
     "@babel/preset-env": "^7.16.7",
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "prisma": "^3.7.0"
   }
 }
