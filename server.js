@@ -1,3 +1,5 @@
+require("dotenv").config();
+
 import { ApolloServer } from "apollo-server";
 import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-core";
 import schema from "./schema";
@@ -7,6 +9,8 @@ const server = new ApolloServer({
   plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
 });
 
-server.listen().then(({ url }) => {
-  console.log(`🤖 Server is Ready at ${url}`);
+const PORT = process.env.PORT;
+
+server.listen(PORT).then(() => {
+  console.log(`🤖 Server is Ready at http://localhost:${PORT}`);
 });
