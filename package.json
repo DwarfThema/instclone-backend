@@ -3,12 +3,13 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "dev": "nodemon --exec babel-node server"
+    "dev": "nodemon --exec babel-node server",
+    "migrate": "npx prisma migrate dev",
+    "studio": "npx prisma studio"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/DwarfThema/instclone-backend.git",
-    "migrate": "npx prisma migrate dev"
+    "url": "git+https://github.com/DwarfThema/instclone-backend.git"
   },
   "keywords": [],
   "author": "",
@@ -18,9 +19,13 @@
   },
   "homepage": "https://github.com/DwarfThema/instclone-backend#readme",
   "dependencies": {
+    "@graphql-tools/load-files": "^6.5.3",
+    "@graphql-tools/merge": "^8.2.1",
+    "@graphql-tools/schema": "^8.3.1",
     "@prisma/client": "^3.7.0",
     "apollo-server": "^3.6.1",
-    "graphql": "^16.2.0"
+    "graphql": "^16.2.0",
+    "graphql-tools": "^8.2.0"
   },
   "devDependencies": {
     "@babel/core": "^7.16.7",
