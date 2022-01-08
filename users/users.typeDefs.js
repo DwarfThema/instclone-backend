@@ -16,20 +16,6 @@ export default gql`
     token: String
     error: String
   }
-
-  type Mutation {
-    createAccount(
-      firstName: String!
-      lastName: String
-      userName: String!
-      email: String!
-      password: String!
-    ): User
-    login(userName: String!, password: String!): LoginResult!
-  }
-  type Query {
-    seeProfile(userName: String!): User
-  }
 `;
 
 /* Use 에는 패스워드는 해줄 필요가 없다. */
