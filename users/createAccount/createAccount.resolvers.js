@@ -1,5 +1,5 @@
 import client from "../../client";
-import jwt from "jsonwebtoken";
+import bcrypt from "jsonwebtoken";
 
 export default {
   Mutation: {

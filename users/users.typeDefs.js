@@ -10,12 +10,6 @@ export default gql`
     createdAt: String!
     updatedAt: String!
   }
-
-  type LoginResult {
-    ok: Boolean!
-    token: String
-    error: String
-  }
 `;
 
 /* Use 에는 패스워드는 해줄 필요가 없다. */
