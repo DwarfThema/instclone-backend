@@ -25,6 +25,8 @@ export default {
       }
       // check password with args.password
       const token = await jwt.sign({ id: user.id }, process.env.SECRET_KEY);
+      // SECRET_KEY는 Private key이다. 이걸 이용해서 sing을 할 수 있다. 이 키가 있어야지 사인된 정보를 식별할 수 있고, 토큰의 만들어지는 키의 방식도 확인 할 수 있다.
+      // 첫번째 arg인 payload는 아무나 다 봐도 상관없는걸 넣으면 된다.
       return {
         ok: true,
         token,
