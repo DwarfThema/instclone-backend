@@ -9,7 +9,7 @@ const server = new ApolloServer({
   schema,
   context: async ({ req }) => {
     return {
-      user: getUser(req.headers.token),
+      loggedInUser: await getUser(req.headers.token),
       //우리가 users.utils.js에서 만든 getUser 유틸을 사용해서 유저가 누구인지 확인하자.
 
       // token: req.headers.token,
