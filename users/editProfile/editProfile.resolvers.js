@@ -1,10 +1,11 @@
 import client from "../../client";
 import bcrypt from "bcrypt";
 import { protectedResolver } from "../users.utils";
+import { GraphQLUpload } from "graphql-upload";
 
 const resolverFn = async (
   _,
-  { firstName, lastName, userName, email, password: newPassword },
+  { firstName, lastName, userName, email, password: newPassword, bio },
   { loggedInUser }
 ) =>
   //context는 graphql resolver의 4번째 arg. 모든 resolver에서 접근가능한 정보를 넣을 수 있는 object : 여기 말고도 createAccout나 login 에서도 접근 가능하다는것
@@ -24,6 +25,7 @@ const resolverFn = async (
         firstName,
         lastName,
         userName,
+        bio,
         email,
         ...(uglyPassword && { password: uglyPassword }),
         //uglyPassword가 true 면 Password = uglyPassword 한다. ...은 중괄호를 풀어주는 역할.
@@ -46,4 +48,5 @@ export default {
     editProfile: protectedResolver(resolverFn),
     //protectedResolver를 이용해서 먼저 검증을 해서 return을 root,args,contex,info 를 받을 수 있고 해당 정보로 아래 fn을 진행한다.
   },
+  Upload: GraphQLUpload,
 };
