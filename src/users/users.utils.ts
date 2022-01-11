@@ -1,5 +1,6 @@
-import jwt from "jsonwebtoken";
+import * as jwt from "jsonwebtoken";
 import client from "../client";
+import { Resolver } from "../types";
 
 export const getUser = async (token) => {
   try {
@@ -35,7 +36,7 @@ export const protectedResolver =
   };
 // Resolver 자체를 받아서 graphql resolver 4가지 args를 받아서 거기서 검증과정을 거친뒤 리턴한다는 과정.
 
-export function protetedResolver(ourResolver) {
+export function protetedResolver(ourResolver:Resolver) {
   return function (root, args, context, info) {
     if (!context.loggedInUser) {
       return {

@@ -1,10 +1,10 @@
-import client from "../../client";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { Resolvers } from "../../types";
 
-export default {
+const resolvers:Resolvers = {
   Mutation: {
-    login: async (_, { userName, password }) => {
+    login: async (_, { userName, password }, {client}) => {
       // find user with args.username
       const user = await client.user.findFirst({ where: { userName } });
       //findFirst 는 필터에 적용되는 첫번째 UserName을 찾아준다.
@@ -36,3 +36,5 @@ export default {
     },
   },
 };
+
+export default resolvers

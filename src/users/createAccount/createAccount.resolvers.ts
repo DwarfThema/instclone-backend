@@ -1,11 +1,11 @@
-import client from "../../client";
 import bcrypt from "bcrypt";
+import { Resolvers } from "../../types";
 
-export default {
+const resolvers:Resolvers = {
   Mutation: {
     createAccount: async (
       _,
-      { firstName, lastName, userName, email, password }
+      { firstName, lastName, userName, email, password }, {client}
     ) => {
       try {
         // check if userName or email are already on DB.
@@ -43,3 +43,5 @@ export default {
     },
   },
 };
+
+export default resolvers
