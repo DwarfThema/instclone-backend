@@ -34,3 +34,15 @@ export const protectedResolver =
     return ourResolver(root, args, context, info);
   };
 // Resolver 자체를 받아서 graphql resolver 4가지 args를 받아서 거기서 검증과정을 거친뒤 리턴한다는 과정.
+
+export function protetedResolver(ourResolver) {
+  return function (root, args, context, info) {
+    if (!context.loggedInUser) {
+      return {
+        ok: false,
+        error: "Please log in to perform this action.",
+      };
+    }
+    return ourResolver(root, args, context, info);
+  };
+}

@@ -1,8 +1,6 @@
 import client from "../../client";
 import bcrypt from "bcrypt";
 
-bcrypt;
-
 export default {
   Mutation: {
     createAccount: async (
@@ -36,6 +34,7 @@ export default {
             password: uglyPassword,
           },
         });
+
         // hash password , hashing makes the passwork looks ugly
         // save and return the user
       } catch (e) {
