@@ -5,14 +5,19 @@ import { Resolver, Resolvers } from "../../types";
 
 const resolverFn:Resolver = async (
   _,
-  { firstName, lastName, userName, email, password: newPassword, bio },
+  { firstName, lastName, userName, email, password: newPassword, bio, avatar },
   { loggedInUser, client }
 ) =>
   //context는 graphql resolver의 4번째 arg. 모든 resolver에서 접근가능한 정보를 넣을 수 있는 object : 여기 말고도 createAccout나 login 에서도 접근 가능하다는것
   //Constext의 정의는 appoloserver가 있는 server 에서 정의할 수 있음
   //위에서는 {token}의 obejct 정보를 갖고와서 여기서 사용된다.
   //이후에 loggedInUser로 변경되어서 사용된다.
-  {
+  
+  {const {filename,createReadStream} = await avatar;
+  const stream = createReadStream()
+  console.log(stream);
+  
+  
     let uglyPassword = null;
     if (newPassword) {
       uglyPassword = await bcrypt.hash(newPassword, 10);
