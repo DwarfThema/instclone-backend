@@ -7,11 +7,12 @@ import { ApolloServerPluginLandingPageGraphQLPlayground } from "apollo-server-co
 import { typeDefs, resolvers } from "./schema";
 import { getUser } from "./users/users.utils";
 import client from "./client";
+import * as logger from "morgan";
 
 const PORT = process.env.PORT;
 
 const startServer = async () => {
-  const server = new ApolloServer({
+  const apollo = new ApolloServer({
     typeDefs,
     resolvers,
     context: async ({ req }) => {
@@ -25,13 +26,14 @@ const startServer = async () => {
     },
     plugins: [ApolloServerPluginLandingPageGraphQLPlayground()],
   });
-  await server.start();
+  await apollo.start();
   const app = express();
+  app.use("/static", express.static("uploads"));
   app.use(graphqlUploadExpress());
-  server.applyMiddleware({ app });
+  apollo.applyMiddleware({ app });
   await new Promise((func : any) => app.listen({ port: PORT }, func));
   console.log(
-    `🤖 Server is Ready at http://localhost:${PORT}${server.graphqlPath}`
+    `🤖 Server is Ready at http://localhost:${PORT}${apollo.graphqlPath}`
   );
 };
 startServer();

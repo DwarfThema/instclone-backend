@@ -14,11 +14,17 @@ const resolverFn:Resolver = async (
   //위에서는 {token}의 obejct 정보를 갖고와서 여기서 사용된다.
   //이후에 loggedInUser로 변경되어서 사용된다.
   
-  {const {filename,createReadStream} = await avatar;
-  const readStream = createReadStream()
-  const writeStream = createWriteStream(process.cwd() + "/uploads/" + filename)
-  readStream.pipe(writeStream)
-  
+  {
+    let avatarUrl = null
+    if(avatar){
+      const {filename,createReadStream} = await avatar;
+      const readStream = createReadStream()
+      const newFilename = `${loggedInUser.id}-${Date.now()}-${filename}`
+      const writeStream = createWriteStream(process.cwd() + "/uploads/" + newFilename)
+      //이제 파이프를 연결해주는 일을 해야한다.
+      readStream.pipe(writeStream)
+      avatarUrl = `hppt://localhost:4000/static/${newFilename}`
+    }
     let uglyPassword = null;
     if (newPassword) {
       uglyPassword = await bcrypt.hash(newPassword, 10);
@@ -34,6 +40,7 @@ const resolverFn:Resolver = async (
         bio,
         email,
         ...(uglyPassword && { password: uglyPassword }),
+        ...(avatarUrl && {avatar:avatarUrl})
         //uglyPassword가 true 면 Password = uglyPassword 한다. ...은 중괄호를 풀어주는 역할.
       },
     });
