@@ -2,9 +2,9 @@ import bcrypt from "bcrypt";
 import { GraphQLUpload } from "graphql-upload";
 import { Resolver, Resolvers } from "../../types";
 import { protectedResolver } from "../users.utils";
-import  { createWriteStream} from "fs"
+import { createWriteStream } from "fs";
 
-const resolverFn:Resolver = async (
+const resolverFn: Resolver = async (
   _,
   { firstName, lastName, userName, email, password: newPassword, bio, avatar },
   { loggedInUser, client }
@@ -13,17 +13,19 @@ const resolverFn:Resolver = async (
   //Constext의 정의는 appoloserver가 있는 server 에서 정의할 수 있음
   //위에서는 {token}의 obejct 정보를 갖고와서 여기서 사용된다.
   //이후에 loggedInUser로 변경되어서 사용된다.
-  
+
   {
-    let avatarUrl = null
-    if(avatar){
-      const {filename,createReadStream} = await avatar;
-      const readStream = createReadStream()
-      const newFilename = `${loggedInUser.id}-${Date.now()}-${filename}`
-      const writeStream = createWriteStream(process.cwd() + "/uploads/" + newFilename)
+    let avatarUrl = null;
+    if (avatar) {
+      const { filename, createReadStream } = await avatar;
+      const readStream = createReadStream();
+      const newFilename = `${loggedInUser.id}-${Date.now()}-${filename}`;
+      const writeStream = createWriteStream(
+        process.cwd() + "/uploads/" + newFilename
+      );
       //이제 파이프를 연결해주는 일을 해야한다.
-      readStream.pipe(writeStream)
-      avatarUrl = `hppt://localhost:4000/static/${newFilename}`
+      readStream.pipe(writeStream);
+      avatarUrl = `hppt://localhost:4000/static/${newFilename}`;
     }
     let uglyPassword = null;
     if (newPassword) {
@@ -40,7 +42,7 @@ const resolverFn:Resolver = async (
         bio,
         email,
         ...(uglyPassword && { password: uglyPassword }),
-        ...(avatarUrl && {avatar:avatarUrl})
+        ...(avatarUrl && { avatar: avatarUrl }),
         //uglyPassword가 true 면 Password = uglyPassword 한다. ...은 중괄호를 풀어주는 역할.
       },
     });
@@ -56,7 +58,7 @@ const resolverFn:Resolver = async (
     }
   };
 
-  const resolvers:Resolvers = {
+const resolvers: Resolvers = {
   Mutation: {
     editProfile: protectedResolver(resolverFn),
     //protectedResolver를 이용해서 먼저 검증을 해서 return을 root,args,contex,info 를 받을 수 있고 해당 정보로 아래 fn을 진행한다.
@@ -64,4 +66,4 @@ const resolverFn:Resolver = async (
   Upload: GraphQLUpload,
 };
 
-export default resolvers
+export default resolvers;
