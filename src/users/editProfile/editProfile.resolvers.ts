@@ -1,7 +1,8 @@
 import bcrypt from "bcrypt";
-import { protectedResolver } from "../users.utils";
 import { GraphQLUpload } from "graphql-upload";
 import { Resolver, Resolvers } from "../../types";
+import { protectedResolver } from "../users.utils";
+import  { createWriteStream} from "fs"
 
 const resolverFn:Resolver = async (
   _,
@@ -14,9 +15,9 @@ const resolverFn:Resolver = async (
   //이후에 loggedInUser로 변경되어서 사용된다.
   
   {const {filename,createReadStream} = await avatar;
-  const stream = createReadStream()
-  console.log(stream);
-  
+  const readStream = createReadStream()
+  const writeStream = createWriteStream(process.cwd() + "/uploads/" + filename)
+  readStream.pipe(writeStream)
   
     let uglyPassword = null;
     if (newPassword) {
