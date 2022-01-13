@@ -10,9 +10,9 @@ Instaclone Backend.
 - [x] Edit Profile (image Upload)
 - [x] Follow User
 - [x] Unfollow User
-- [ ] See follower n See following w/ pagination
-- [ ] computed fields
-- [ ] Search Users
+- [x] See follower n See following w/ pagination
+- [x] computed fields
+- [x] Search Users
 
 ## Photo:
 

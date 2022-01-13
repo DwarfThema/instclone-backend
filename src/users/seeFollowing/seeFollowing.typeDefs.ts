@@ -5,7 +5,6 @@ export default gql`
     ok: Boolean!
     error: String
     following: [User]
-    totalFollowers: Int
     totalPages: Int
   }
   type Query {

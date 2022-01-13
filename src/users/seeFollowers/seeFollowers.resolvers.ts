@@ -26,7 +26,6 @@ const resolvers: Resolvers = {
       return {
         ok: true,
         followers,
-        totalFollowers,
         totalPages: Math.ceil(totalFollowers / 5),
       };
     },
