@@ -14,12 +14,19 @@ Instaclone Backend.
 - [x] computed fields
 - [x] Search Users
 
-## Photo:
+## Photos
 
+- [ ] Upload Photo (Parse #)
 - [ ] See Photo
-- [ ] Upload Photo
-- [ ] edit Photo
+- [ ] See Hashtags
+- [ ] Search Photos
+- [ ] Edit Photo
 - [ ] Like / Unlike Photo
 - [ ] See Photo Likes
 - [ ] See Feed
-- [ ] Search Photos
+
+## Comments
+
+- [ ] Comment on Photo
+- [ ] Edit Comment
+- [ ] Delete Comment
