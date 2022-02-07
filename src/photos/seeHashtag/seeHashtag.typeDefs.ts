@@ -2,6 +2,6 @@ import { gql } from "apollo-server";
 
 export default gql`
   type Query {
-    seePhoto(id: Int!): Photo
+    seeHashtag(hashtag: String!): Hashtag
   }
 `;
