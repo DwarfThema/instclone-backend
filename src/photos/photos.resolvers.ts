@@ -18,7 +18,7 @@ export default {
   },
   Hashtag: {
     photos: ({ id }, { page }, { loggedInUser }) => {
-      console.log(page);
+      console.log(id);
       return client.hashtag
         .findUnique({
           where: {

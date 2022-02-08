@@ -51,6 +51,9 @@ const resolvers: Resolvers = {
       });
       return Boolean(countExists);
     },
+    photos: ({ id }) => {
+      client.user.findUnique({ where: { id } }).photos();
+    },
   },
 };
 
