@@ -11,10 +11,17 @@ export default gql`
     updatedAt: String!
   }
   type Hashtag {
-    id: String!
+    id: Int!
     hashtag: String!
     photos(page: Int!): [Photo]
     totalPhotos: Int!
+    createdAt: String!
+    updatedAt: String!
+  }
+
+  type Like {
+    id: Int!
+    photo: Photo!
     createdAt: String!
     updatedAt: String!
   }
