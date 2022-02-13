@@ -31,7 +31,7 @@ export default {
     totalPhotos: ({ id }) =>
       client.photo.count({
         where: {
-          hashtag: { some: { id } },
+          hashtags: { some: { id } },
         },
       }),
   },

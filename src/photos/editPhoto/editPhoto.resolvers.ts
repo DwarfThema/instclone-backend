@@ -10,7 +10,7 @@ const resolverFn: Resolver = async (_, { id, caption }, { loggedInUser }) => {
       userId: loggedInUser.id,
     },
     include: {
-      hashtag: {
+      hashtags: {
         select: {
           hashtag: true,
         },
@@ -29,8 +29,8 @@ const resolverFn: Resolver = async (_, { id, caption }, { loggedInUser }) => {
     },
     data: {
       caption,
-      hashtag: {
-        disconnect: oldPhoto.hashtag,
+      hashtags: {
+        disconnect: oldPhoto.hashtags,
         connectOrCreate: processHashtags(caption),
       },
     },
