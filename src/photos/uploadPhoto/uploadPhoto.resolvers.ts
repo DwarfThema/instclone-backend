@@ -20,7 +20,7 @@ const resolverFn: Resolver = async (_, { file, caption }, { loggedInUser }) => {
         },
       },
       ...(hashtagObj.length > 0 && {
-        hashtag: {
+        hashtags: {
           connectOrCreate: hashtagObj,
         },
       }),
