@@ -3,6 +3,7 @@ import { GraphQLUpload } from "graphql-upload";
 import { Resolver, Resolvers } from "../../types";
 import { protectedResolver } from "../users.utils";
 import { createWriteStream } from "fs";
+import { uploadToS3 } from "../../shared/shared.utils";
 
 const resolverFn: Resolver = async (
   _,
@@ -17,7 +18,9 @@ const resolverFn: Resolver = async (
   {
     let avatarUrl = null;
     if (avatar) {
-      const { filename, createReadStream } = await avatar;
+      avatarUrl = await uploadToS3(avatar, loggedInUser.id, "avatars");
+
+      /* const { filename, createReadStream } = await avatar;
       const readStream = createReadStream();
       const newFilename = `${loggedInUser.id}-${Date.now()}-${filename}`;
       const writeStream = createWriteStream(
@@ -25,7 +28,7 @@ const resolverFn: Resolver = async (
       );
       //이제 파이프를 연결해주는 일을 해야한다.
       readStream.pipe(writeStream);
-      avatarUrl = `hppt://localhost:4000/static/${newFilename}`;
+      avatarUrl = `hppt://localhost:4000/static/${newFilename}`; */
     }
     let uglyPassword = null;
     if (newPassword) {
