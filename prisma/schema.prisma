@@ -77,7 +77,7 @@ model Comment {
 model Room {
   id        Int       @id @default(autoincrement())
   users     User[]
-  Message   Message[]
+  Messages   Message[]
   createdAt DateTime  @default(now())
   updatedAt DateTime  @updatedAt
 }
