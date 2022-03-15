@@ -25,9 +25,9 @@ Instaclone Backend.
 - [x] Like / Unlike Photo
 - [x] See Photo Likes
 - [x] See Photo Comments
-- [ ] See Photo Comments Pagination
+- [x] See Photo Comments Pagination
 - [x] See Feed
-- [ ] Is Mine (Delete Photo)
+- [x] Is Mine (Delete Photo)
 
 ## Comments
 
@@ -41,6 +41,9 @@ Instaclone Backend.
 
 ## DMs
 
-- [ ] Get Room
+- [ ] See Rooms
 - [ ] Send Message(Create Room)
+- [ ] See Room
+- [ ] Computed Fields
+- [ ] See Message
 - [ ] Realtime Messages
