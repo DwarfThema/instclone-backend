@@ -1,4 +1,6 @@
 import client from "../../client";
+import { NEW__MESSAGE } from "../../constants";
+import pubsub from "../../pubsub";
 import { Resolver, Resolvers } from "../../types";
 import { protectedResolver } from "../../users/users.utils";
 
@@ -53,7 +55,7 @@ const resolver: Resolver = async (
       };
     }
   }
-  await client.message.create({
+  const message = await client.message.create({
     data: {
       payload,
       room: {
@@ -68,6 +70,7 @@ const resolver: Resolver = async (
       },
     },
   });
+  pubsub.publish(NEW__MESSAGE, { roomUpdates: { ...message } });
   return {
     ok: true,
   };
