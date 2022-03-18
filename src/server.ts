@@ -46,7 +46,6 @@ const startServer = async () => {
           };
         },
       },
-      //ws setting
     ],
   });
   await apollo.start();
