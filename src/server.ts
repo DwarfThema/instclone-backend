@@ -24,10 +24,10 @@ const schema = makeExecutableSchema({ typeDefs, resolvers });
 const startServer = async () => {
   const apollo = new ApolloServer({
     schema,
-    context: async ({ req }) => {
-      if (req) {
+    context: async (ctx) => {
+      if (ctx.req) {
         return {
-          loggedInUser: await getUser(req.headers.token),
+          loggedInUser: await getUser(ctx.req.headers.token),
           //우리가 users.utils.js에서 만든 getUser 유틸을 사용해서 유저가 누구인지 확인하자.
           // token: req.headers.token,
           //html 에서 보내는 headers 정보를 vsc에서 사용 할 수 있다. 우리는 token 정보를 이용하자.
@@ -60,6 +60,19 @@ const startServer = async () => {
       schema,
       execute,
       subscribe,
+      onConnect: async ({ token }: { token?: string }, webSoket, context) => {
+        if (!token) {
+          throw new Error("You can't listen.");
+        }
+        console.log("onConnect!");
+        const loggedInUser = await getUser(token);
+        return {
+          loggedInUser,
+        };
+      },
+      onDisconnect(webSokent, context) {
+        console.log("onDisconnect!");
+      },
     },
     {
       server: httpServer,
