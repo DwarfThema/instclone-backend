@@ -11,7 +11,7 @@ const resolvers: Resolvers = {
       if (!user) {
         return {
           ok: false,
-          error: "User not found",
+          error: "유저를 찾을 수 없습니다.",
           //throw 와는 다르게 throw 는 생성되는순간 모든걸 다 폭파시키는 느낌이라면 이건 error를 보여줄 수 있는 느낌.
         };
       }
@@ -20,7 +20,7 @@ const resolvers: Resolvers = {
       if (!passwordOk) {
         return {
           ok: false,
-          error: "Incorrect password",
+          error: "패스워드가 맞지 않습니다.",
         };
       }
       // check password with args.password
