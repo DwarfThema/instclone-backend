@@ -1,5 +1,5 @@
 import client from "../../client";
-import { Resolver } from "../../types";
+import { Resolver, Resolvers } from "../../types";
 import { protetedResolver } from "../users.utils";
 
 const resolverFn: Resolver = (_, __, { loggedInUser }) => {
@@ -10,8 +10,10 @@ const resolverFn: Resolver = (_, __, { loggedInUser }) => {
   });
 };
 
-export default {
+const resolvers: Resolvers = {
   Query: {
     me: protetedResolver(resolverFn),
   },
 };
+
+export default resolvers;
