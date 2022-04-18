@@ -27,7 +27,7 @@
     "@graphql-tools/schema": "^8.3.3",
     "@prisma/client": "^3.7.0",
     "apollo-server": "^3.6.1",
-    "apollo-server-core": "^3.6.4",
+    "apollo-server-core": "^3.6.7",
     "apollo-server-express": "^3.6.1",
     "aws-sdk": "^2.1089.0",
     "bcrypt": "^5.0.1",

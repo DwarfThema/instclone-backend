@@ -23,6 +23,7 @@ const schema = makeExecutableSchema({ typeDefs, resolvers });
 
 const startServer = async () => {
   const apollo = new ApolloServer({
+    introspection: true,
     schema,
     context: async (ctx) => {
       if (ctx.req) {
