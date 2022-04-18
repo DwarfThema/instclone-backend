@@ -80,7 +80,9 @@ const startServer = async () => {
     }
   );
 
-  await new Promise((func: any) => httpServer.listen({ port: PORT }, func));
+  await new Promise((func: any) =>
+    httpServer.listen({ port: PORT } || 4000, func)
+  );
   console.log(
     `🤖 Server is Ready at http://localhost:${PORT}${apollo.graphqlPath}`
   );
