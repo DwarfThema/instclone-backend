@@ -51,3 +51,4 @@ Instaclone Backend.
 ## Deploy
 
 - [x] Heroku setup
+- [x] heroku git
