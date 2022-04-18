@@ -5,7 +5,9 @@
   "scripts": {
     "dev": "nodemon --exec ts-node src/server --ext ts,js --delay 2",
     "migrate": "npx prisma migrate dev",
-    "studio": "npx prisma studio"
+    "studio": "npx prisma studio",
+    "build": "npx tsc",
+    "start": "node built/server"
   },
   "repository": {
     "type": "git",
@@ -40,8 +42,10 @@
     "ws": "^8.5.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.16.7",
+    "@babel/cli": "^7.17.6",
+    "@babel/core": "^7.17.9",
     "@babel/node": "^7.16.7",
+    "@babel/plugin-transform-runtime": "^7.17.0",
     "@babel/preset-env": "^7.16.7",
     "nodemon": "^2.0.15",
     "prisma": "^3.9.2",
