@@ -16,7 +16,7 @@ import { makeExecutableSchema } from "@graphql-tools/schema";
 import { SubscriptionServer } from "subscriptions-transport-ws";
 import { execute, subscribe } from "graphql";
 
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT;
 
 const app = express();
 const schema = makeExecutableSchema({ typeDefs, resolvers });
