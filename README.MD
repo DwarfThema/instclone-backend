@@ -47,3 +47,5 @@ Instaclone Backend.
 - [x] Computed Fields
 - [x] See Message
 - [x] Realtime Messages
+
+- [x] heroku
