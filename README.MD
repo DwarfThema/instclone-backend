@@ -48,4 +48,6 @@ Instaclone Backend.
 - [x] See Message
 - [x] Realtime Messages
 
-- [x] heroku
+## Deploy
+
+- [x] Heroku setup
